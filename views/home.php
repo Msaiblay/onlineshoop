@@ -84,9 +84,7 @@ require 'frontendheader.php';
                                     <li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
                                 </ul>
                             </div>
-
                             <a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
-
                         </div>
                     </div>
                         <?php } ?>
