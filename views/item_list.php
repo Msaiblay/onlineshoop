@@ -45,11 +45,11 @@ require 'backendheader.php';
                             <tr>
                                 <td><?php echo $i++;?></td>
                                 <td class="row m-0 ">
-                                    <div class="col-3 p-0">
+                                    <div class="col-md-5 col-lg-3 p-0">
 
-                                        <img class="img-fluid w-50" src="<?php echo $photo;?>">
+                                        <img style="width:150px;height: 100px" width="" src="<?php echo $photo;?>" ">
                                     </div>
-                                    <div class="col-9">
+                                    <div class=" col-md-7 col-lg-9">
                                         <?php echo $name;?><br>
                                         <?php echo $discreption;?>
                                     </div>

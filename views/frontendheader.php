@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-10">
-                    <a href="" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+                    <a href="<?php echo $GLOBALS['view_path']?>login" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
 
 
                 </div>
@@ -276,7 +276,7 @@
         </div>
         <hr>
 
-        <a href="#"> Login | Signup</a>
+        <a href="<?php echo $GLOBALS['view_path']?>login"> Login | Signup</a>
         <hr>
 
         <a href="#"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>

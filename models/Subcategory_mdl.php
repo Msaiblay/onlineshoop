@@ -62,5 +62,13 @@ class Subcategory_mdl
         $rows = $stmt->fetchAll();
         return $rows;
     }
+    function delete($id){
+        $sql = "DELETE FROM sub_category WHERE id = :v1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':v1',$id);
+        $stmt->execute();
+        $rows = $stmt->rowcount();
+        return $rows;
+    }
 }
 ?>

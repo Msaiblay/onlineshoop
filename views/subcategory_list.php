@@ -47,9 +47,12 @@ require 'backendheader.php';
                                         <i class="icofont-ui-settings"></i>
                                     </a>
 
-                                    <a href="" class="btn btn-outline-danger">
-                                        <i class="icofont-close"></i>
-                                    </a>
+                                    <form action="<?php echo $GLOBALS['view_path']?>subcategory_delete" method="post" onsubmit="return confirm('Are You Sure to delete?')">
+                                        <input type="hidden" value="<?php echo $id ?>" name="id">
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            <i class="icofont-close"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php } ?>

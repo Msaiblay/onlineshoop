@@ -54,6 +54,12 @@ function insert(){
     return $getall;
 
     }
-
+    function delete($id)
+    {
+        $submdl = new Subcategory_mdl();
+        $delete = $submdl->delete($id);
+        $url = $GLOBALS['view_path'].'subcategory_list';
+        header("location:".$url);
+    }
 
 }

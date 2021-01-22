@@ -24,6 +24,10 @@ $subcategory= new Subcategory_ctrl();
 require $GLOBALS['controller_file_path']."Item_ctrl.php";
 $item= new Item_ctrl();
 
+//register
+require $GLOBALS['controller_file_path']."Userregister_ctrl.php";
+$userregister = new Userregister_ctrl();
+
 //-------------------------------------------------//-------------------------------------
 //category
 if ($router =='category_list'){
@@ -97,6 +101,11 @@ elseif ($router == 'subcategory_edit'){
 elseif ($router == 'subcategory_update') {
     $subcategory->update();
 }
+elseif ($router == 'subcategory_delete') {
+    $id = $_POST['id'];
+//    echo  $id;
+    $subcategory->delete($id);
+}
 
 //-------------------------------------------------//-------------------------------------
 //item
@@ -119,6 +128,10 @@ elseif ($router == 'item_edit'){
     $itemedit = $item->edit($id);
     require $GLOBALS['view_file_path']."item_edit.php";
 }
+elseif ($router == 'item_update') {
+
+    $item->update();
+}
 
 //-------------------------------------------------//-------------------------------------
 //root
@@ -135,4 +148,19 @@ elseif ($router == '') {
 //    var_dump($randomitems);die();
 
     require $GLOBALS['view_file_path']."home.php";
+}
+
+//login
+elseif ($router == 'login') {
+    require $GLOBALS['view_file_path']."login.php";
+}
+
+//lregister
+elseif ($router == 'register') {
+    require $GLOBALS['view_file_path']."register.php";
+}
+elseif ($router == 'signup'){
+//    var_dump("msai");
+//    die();
+    $userregister->insert();
 }
