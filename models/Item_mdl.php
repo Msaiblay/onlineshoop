@@ -57,7 +57,7 @@ class Item_mdl
         return $rows;
     }
     function randomitemdata(){
-        $subcid =10;
+        $subcid =8;
         $sql = "SELECT * FROM items WHERE sub_category = :v1 LIMIT 8";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':v1',$subcid);

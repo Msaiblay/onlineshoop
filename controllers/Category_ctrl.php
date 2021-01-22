@@ -3,6 +3,7 @@
 
 class Category_ctrl
 {
+
     function __construct(){
         require $GLOBALS['model_file_path']."Category_mdl.php";
     }
@@ -68,6 +69,12 @@ class Category_ctrl
         $categorymdl = new Category_mdl();
         $getrandomresults= $categorymdl->randomcategories_data();
         return $getrandomresults;
+    }
+    function delete($id){
+        $catmdl = new Category_mdl();
+        $catmdl->delete_data($id);
+        $url = $GLOBALS['view_path'].'category_list';
+        header("location:".$url);
     }
 }
 ?>

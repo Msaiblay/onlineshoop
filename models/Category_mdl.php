@@ -30,7 +30,7 @@ class Category_mdl
         return $rows;
     }
     function edit_data($id){
-        $sql="SELECT * FROM category Where id = :v1";
+            $sql="SELECT * FROM category WHERE id = :v1";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':v1',$id);
         $stmt->execute();
@@ -53,6 +53,18 @@ class Category_mdl
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
+    }
+    function delete_data($id){
+        $sql="DELETE FROM category WHERE id = :v1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':v1',$id);
+        $stmt->execute();
+
+        $rows = $stmt->rowcount();
+        return $rows;
+
+//        var_dump($id."mdl");
+//        die();
     }
 }
 ?>

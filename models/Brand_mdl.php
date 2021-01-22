@@ -31,7 +31,7 @@ class Brand_mdl
     }
 
     function edit_data($id){
-        $sql="SELECT * FROM brand Where id = :v1";
+        $sql="SELECT * FROM brand WHERE id = :v1";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':v1',$id);
         $stmt->execute();
@@ -39,11 +39,19 @@ class Brand_mdl
         return $rows;
     }
     function update_data($id, $data){
-        $sql="UPDATE brand SET name=:v1, logo=:v2 Where id=:v3";
+        $sql="UPDATE brand SET name=:v1, logo=:v2 WHERE id=:v3";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':v1',$data['name']);
         $stmt->bindParam(':v2',$data['photo']);
         $stmt->bindParam(':v3',$id);
+        $stmt->execute();
+        $rows = $stmt->rowcount();
+        return $rows;
+    }
+    function deletedata($id){
+        $sql="DELETE FROM brand WHERE id = :v1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':v1',$id);
         $stmt->execute();
         $rows = $stmt->rowcount();
         return $rows;

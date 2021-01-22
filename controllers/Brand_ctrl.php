@@ -65,7 +65,13 @@ class Brand_ctrl
         $url = $GLOBALS['view_path'].'brand_list';
         header("location:".$url);
     }
+    function delete($id){
+        $brandmdl = new Brand_mdl();
+        $brandmdl->deletedata($id);
 
+        $url = $GLOBALS['view_path'].'brand_list';
+        header("location:".$url);
+    }
 
 }
 ?>

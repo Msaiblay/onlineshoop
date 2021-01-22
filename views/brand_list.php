@@ -38,7 +38,7 @@ require 'backendheader.php';
                         <tr>
                             <td> <?php echo $i++;?> </td>
                             <td>
-                                <img src="<?php echo $logo?>" class="img-fluid w-25">
+                                <img src="<?php echo $logo?>" class="img-fluid" style="width:100px; height: 100px ">
                                 <?php echo $name; ?>
                             </td>
                             <td>
@@ -46,9 +46,13 @@ require 'backendheader.php';
                                 <i class="icofont-ui-settings"></i>
                                 </a>
 
-                                <a href="" class="btn btn-outline-danger">
-                                <i class="icofont-close"></i>
-                                </a>
+                                <form class="d-inline-block" action="<?php echo $GLOBALS['view_path']?>brand_delete"
+                                      method="post" onsubmit="return confirm('Are You Sure to Delete?')">
+                                    <button class="btn btn-outline-danger">
+                                        <input type="hidden" name="id" value="<?php echo $id?>">
+                                        <i class="icofont-close"></i>
+                                    </button>
+                                </form>
                             </td>
 
                         </tr>

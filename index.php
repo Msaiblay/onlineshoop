@@ -44,7 +44,11 @@ elseif ($router == 'category_edit'){
 elseif ($router == 'category_update') {
     $category->update();
 }
-
+elseif ($router == 'category_delete') {
+    $id = $_POST['id'];
+//    var_dump($id);
+    $category->delete($id);
+}
 //-------------------------------------------------//-------------------------------------
 //brand
 elseif ($router == 'brand_list') {
@@ -65,7 +69,11 @@ elseif ($router == 'brand_edit'){
 elseif ($router == 'brand_update') {
     $brand->update();
 }
-
+elseif ($router == 'brand_delete') {
+    $id = $_POST['id'];
+    $brand->delete($id);
+}
+//----------
 
 //-------------------------------------------------//-------------------------------------
 //sub category
