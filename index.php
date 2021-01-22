@@ -164,7 +164,9 @@ elseif ($router == 'register') {
     require $GLOBALS['view_file_path']."register.php";
 }
 elseif ($router == 'signup'){
-//    var_dump("msai");
-//    die();
     $userregister->insert();
+}
+elseif ($router == 'signin') {
+    $userregister->login();
+
 }

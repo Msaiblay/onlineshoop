@@ -23,7 +23,7 @@ class Userregister_mdl{
         $stmt->bindParam(':v6', $data['status']);
         $stmt->execute();
 
-//        ??last userid
+//      last userid
         $userid = $this->pdo->lastInsertId();
         $roleid = 2;
 
@@ -36,5 +36,19 @@ class Userregister_mdl{
         $rows = $stmt->rowCount();
         return $rows;
     }
+    function login_data($data){
 
+        $sql = "SELECT * FROM users WHERE email=:v1 AND password=:v2";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':v1', $data['email']);
+        $stmt->bindParam(':v2', $data['password']);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+//        var_dump($user);
+//        die();
+        return $user;
+
+
+    }
 }
