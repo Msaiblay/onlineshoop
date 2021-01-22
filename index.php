@@ -129,8 +129,12 @@ elseif ($router == 'item_edit'){
     require $GLOBALS['view_file_path']."item_edit.php";
 }
 elseif ($router == 'item_update') {
-
     $item->update();
+}
+elseif ($router == 'item_delete') {
+    $id = $_POST['id'];
+    echo  $id;
+    $item->delete($id);
 }
 
 //-------------------------------------------------//-------------------------------------
