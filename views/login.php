@@ -34,8 +34,7 @@ require "frontendheader.php";
 
                     ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <h1> 🎉 Oops..!</h1>
-                        <h5>Well Don</h5>
+                        <h1> ⚠️ Oops..!</h1>
                         <p><?php echo $_SESSION['login_failed']?> </p>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
