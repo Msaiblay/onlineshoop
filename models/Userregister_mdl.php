@@ -37,16 +37,14 @@ class Userregister_mdl{
         return $rows;
     }
     function login_data($data){
-
-        $sql = "SELECT * FROM users.*, model_has_role.role_id as roleid, role.name as rolename
-INNER JOIN  model_has_role ON users.id = model_has_role.user_id
-INNER JOIN  roles ON model_has_role.role_id = roles.id
-WHERE email=:v1 AND password=:v2";
-        var_dump($sql);
-        die();
+        $sql = "SELECT users.*, model_has_role.role_id as roleid, roles.name as rolename
+                FROM users
+                INNER JOIN  model_has_role ON users.id = model_has_role.user_id
+                INNER JOIN  roles ON model_has_role.role_id = roles.id
+                WHERE email=:v1 AND password=:v2";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':v1', $data['email']);
-        $stmt->bindParam(':v2', $data['password']);
+        $stmt->bindValue(':v1', $data['email']);
+        $stmt->bindValue(':v2', $data['password']);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);

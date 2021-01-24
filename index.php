@@ -28,6 +28,10 @@ $item= new Item_ctrl();
 require $GLOBALS['controller_file_path']."Userregister_ctrl.php";
 $userregister = new Userregister_ctrl();
 
+//order
+require $GLOBALS['controller_file_path']."Order_ctrl.php";
+$order = new Order_ctrl();
+
 //-------------------------------------------------//-------------------------------------
 //category
 if ($router =='category_list'){
@@ -153,6 +157,13 @@ elseif ($router == '') {
 
     require $GLOBALS['view_file_path']."home.php";
 }
+//shooping card
+elseif ($router == 'cart') {
+    $brands =$brand->read();
+    $categories =$category->read();
+    require $GLOBALS['view_file_path']."cart.php";
+}
+
 
 //login
 elseif ($router == 'login') {
@@ -168,5 +179,19 @@ elseif ($router == 'signup'){
 }
 elseif ($router == 'signin') {
     $userregister->login();
-
 }
+elseif ($router == 'logout') {
+    $userregister->logout();
+}
+
+//order
+elseif ($router == 'storeorder') {
+    $order->store();
+}
+//order
+elseif ($router == 'successorder') {
+    $brand = $brand->read();
+    $categories = $category-> read();
+    require $GLOBALS['view_file_path']."ordersuccess.php";
+}
+

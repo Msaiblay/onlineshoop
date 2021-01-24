@@ -97,7 +97,6 @@
             </a>
         </div>
 
-        <p class="m-0 text-center text-white">Copyright &copy; <img src="../logo/logo_wh_transparent.png" style="width: 30px; height: 30px"> 2019</p>
     </div>
 </footer>
 
@@ -112,4 +111,266 @@
 <!-- Owl Carousel -->
 <script type="text/javascript" src="<?php echo $GLOBALS['view_path'] ?>template/frontend/js/owl.carousel.js"></script>
 
+<!--add to card -->
+<script type="text/javascript">
+    var storeorderurl = "<?php echo $GLOBALS['view_path'] ?>storeorder";
+    var successorderurl = "<?php echo $GLOBALS['view_path'] ?>successorder";
+</script>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+        noti();
+        showdata();
+        $(".addtocartBtn").click(function (){
+            var id=$(this).data('id');
+            var name=$(this).data('name');
+            var codeno=$(this).data('codeno');
+            var price=$(this).data('price');
+            var dprice=$(this).data('dprice');
+            var photo=$(this).data('photo');
+
+            var items ={
+                id:id,
+                name:name,
+                code:codeno,
+                price:price,
+                dprice:dprice,
+                photo:photo,
+                qty:1
+            }
+            // console.log(items)
+            var status = false;
+            var  itemlist = localStorage.getItem("msaiitem");
+            var itemarray;
+
+            if (itemlist==null){
+                itemarray=[];
+            }else{
+                itemarray = JSON.parse(itemlist);
+            }
+
+            // console.log("msai");
+
+            itemarray.forEach(function (v,i){
+                // console.log(v.id)
+                if (id == v.id){
+                    v.qty++;
+                    status=true;
+                }
+            });
+            if (status == false){
+                itemarray.push(items);
+            }
+            var itemstring = JSON.stringify(itemarray);
+
+            localStorage.setItem("msaiitem",itemstring);
+            showdata();
+            noti();
+        })
+        function showdata(){
+            var itemlist = localStorage.getItem("msaiitem");
+            if (itemlist){
+                var html="";
+                var subtotal;
+                var total = 0;
+                var itemarray = JSON.parse(itemlist);
+                // console.log(itemarray);
+                itemarray.forEach(function (v,i){
+                    var price;
+                    var dprice = v.dprice;
+                    if (dprice ==""){
+                        price= v.price;
+
+                    }else{
+                        price= v.dprice;
+                    }
+                    // console.log(price)
+
+
+                    subtotal = v.qty*price;
+                    total +=subtotal;
+                    html += `
+                    <tr>
+                        <td>
+                            <button class="btn btn-outline-danger remove btn-sm" data-id="${i}"  style="border-radius: 50%">
+                                <i class="icofont-close-line"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <img src="${v.photo}" class="cartImg">
+                        </td>
+                        <td>
+                            <p>${v.name}</p>
+                            <p>${v.codeno}</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-secondary plus_btn btnincreasse" data-id="${i}">
+                                <i class="icofont-plus"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <p>${v.qty}</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-secondary minus_btn btndecreasse" data-id="${i}">
+                                <i class="icofont-minus"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <p class="text-danger">
+                                ${price} Ks
+                            </p>
+                            <p class="font-weight-lighter">
+                                <del> ${v.price} Ks </del> </p>
+                        </td>
+                        <td>
+                            ${subtotal} Ks
+                        </td>
+                    </tr>`
+
+                });
+
+                $("#shoppingcart_table").html(html);
+                $("#mytotal").html("Total: "+total +"Ks");
+            }
+        }
+
+        function noti(){
+
+            var  itemlist = localStorage.getItem("msaiitem");
+
+            var totalcount=0;
+            if (itemlist){
+
+                var itemarray = JSON.parse(itemlist);
+                itemarray.forEach(function (v,i){
+                    totalcount += v.qty;
+                });
+                // console.log(totalcount)
+
+                $("#msaitotal").html(totalcount);
+            }
+        }
+        $("#shoppingcart_table").on('click','.btnincreasse', function (){
+            // alert("msai")
+            var id = $(this).data('id');
+            var  itemlist = localStorage.getItem("msaiitem");
+            if (itemlist){
+                var itemarray = JSON.parse(itemlist);
+                itemarray.forEach(function (v,i) {
+                    if ( i == id){
+                        v.qty++;
+                    }
+                });
+
+                var itemstring = JSON.stringify(itemarray);
+                localStorage.setItem("msaiitem",itemstring);
+                showdata();
+                noti();
+
+            }
+
+        })
+        $("#shoppingcart_table").on('click','.btndecreasse', function (){
+            // alert("msai")
+            var id = $(this).data('id');
+            var  itemlist = localStorage.getItem("msaiitem");
+            if (itemlist){
+                var itemarray = JSON.parse(itemlist);
+                itemarray.forEach(function (v,i) {
+                    if ( i == id){
+
+                        v.qty--;
+                        if (v.qty == 0){
+                            ans = confirm("Are You sure To remove?")
+                            if (ans){
+                                itemarray.splice(id,1);
+                            }else {
+                                v.qty++;
+                            }
+                        }
+                    }
+                });
+
+                var itemstring = JSON.stringify(itemarray);
+                localStorage.setItem("msaiitem",itemstring);
+                showdata();
+                noti();
+
+            }
+
+        })
+
+
+        $("#shoppingcart_table").on('click','.remove', function (){
+            // alert("msai")
+            var id = $(this).data('id');
+            var  itemlist = localStorage.getItem("msaiitem");
+
+            if (itemlist){
+                var itemarray = JSON.parse(itemlist);
+                itemarray.forEach(function (v,i) {
+                    if ( i == id){
+                        ans = confirm("Are You sure To remove?")
+                        if (ans){
+                            itemarray.splice(id,1);
+                        }
+                    }
+                });
+
+                var itemstring = JSON.stringify(itemarray);
+                localStorage.setItem("msaiitem",itemstring);
+                showdata();
+                noti();
+            }
+
+        })
+
+        $(".checkoutBtn").click(function (){
+            var itemlist = localStorage.getItem("msaiitem");
+            var subtotal;
+            var total = 0;
+            var itemarray = JSON.parse(itemlist);
+            var note = $("#notes").val();
+            itemarray.forEach(function (v,i){
+                var price;
+                var dprice = v.dprice;
+                if (dprice ==""){
+                    price= v.price;
+
+                }else {
+                    price = v.dprice;
+                }
+                subtotal = v.qty*price;
+                total +=subtotal;
+            });
+            // console.log(note)
+            $.ajax({
+                url : storeorderurl,
+                type: 'POST',
+                dataType:'default: Intelligent Guess (Other value: xml, json, script, or html)',
+                data:{
+                    cart : itemarray,
+                    total: total,
+                    note: note
+                },
+                success:function (result){
+                    alert(result);
+                }
+            })
+            // .always(function){
+            //     localStorage.clear();
+            //     location.href = successorderurl;
+            // });
+        });
+
+    })
+
+
+
+</script>
 </body>

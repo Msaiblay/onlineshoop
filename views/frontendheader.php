@@ -78,9 +78,15 @@ session_start();
                     </div>
                 </div>
                 <div class="col-lg-4 col-10">
+                    <?php if (!isset($_SESSION['login_user'])){
+
+                     ?>
                     <a href="<?php echo $GLOBALS['view_path']?>login" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Login | Sign-up </a>
+                    <?php }else{
+                      ?>
+                        <a href="<?php echo $GLOBALS['view_path']?>logout" class="d-xl-block d-lg-block d-md-block d-none  text-decoration-none loginLink float-right"> Logout</a>
 
-
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -93,10 +99,10 @@ session_start();
                 <i class="icofont-search"></i>
             </div>
 
-            <a href="" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink">
+            <a href="<?php echo $GLOBALS['view_path']?>cart" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink">
                 <i class="icofont-shopping-cart"></i>
-                <span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1 </span>
-                <span> 4,800 Ks </span>
+                <span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti" id="msaitotal"> 0</span>
+                <span id="toptotel"></span>
             </a>
 
             <a href="" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink">
@@ -163,17 +169,23 @@ session_start();
         <div class="col-3">
             <div class="hov-dropdown d-inline-block">
                 <a class="text-decoration-none text-dark font-weight-bold" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2"> Merchants </span>
+                    <span class="mr-2"> Brand </span>
                     <i class="icofont-rounded-down pt-2"></i>
 
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="#">Actionaaaa</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <ul class="dropdown-menu">
+                    <h6 class="dropdown-header">
+                        <?php echo $name;?>
+                    </h6>
+                    <?php
+                    foreach ($brands as $brand){
+                        $sid  = $brand['id'];
+                        $sname = $brand['name'];
+
+                        ?>
+                        <li><a class="dropdown-item" href="#"><?php echo  $sname?></a></li>
+                    <?php }?>
+                </ul>
             </div>
         </div>
 
@@ -237,12 +249,41 @@ session_start();
 
         </a>
 
-        <div class="collapse sidebardropdown_container_category mt-3" id="category">
-            <a href="" class="py-2"> Category One </a>
+        <div class="collapse mt-3" id="category">
+            <!--<a href="" class="py-2"> Category One </a>
             <a href="" class="py-2"> Category Two </a>
             <a href="" class="py-2"> Category Three </a>
             <a href="" class="py-2"> Category Four </a>
-            <a href="" class="py-2"> Category Five </a>
+            <a href="" class="py-2"> Category Five </a>--><?php
+            foreach ($categories as $category){
+                $cid = $category['id'];
+                $name =$category['name'];
+                ?>
+                <div class="dropdown-submenu">
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <?php echo $name;?>
+                        <i class="icofont-rounded-right float-right"></i>
+                    </a>
+                    <div class="collapse">
+                        <h6 class="dropdown-header">
+                            <?php echo $name;?>
+                        </h6>
+                        <?php
+                        $subcategories = $subcategory->getallBycategoryid($cid);
+                        foreach ($subcategories as $sub){
+                            $sid  = $sub['id'];
+                            $sname = $sub['name'];
+
+                            ?>
+                            <div>
+                                <a class="dropdown-item" href="#"><?php echo  $sname?></a>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+<!--                <div class="dropdown-divider"></div>-->
+            <?php }?>
+
         </div>
 
         <hr>
@@ -257,11 +298,19 @@ session_start();
         </a>
 
         <div class="collapse sidebardropdown_container_category mt-3" id="brand">
-            <a href="" class="py-2"> Brand One </a>
-            <a href="" class="py-2"> Brand Two </a>
-            <a href="" class="py-2"> Brand Three </a>
-            <a href="" class="py-2"> Brand Four </a>
-            <a href="" class="py-2"> Brand Five </a>
+<!--            <ul class="dropdown-menu">-->
+                <h6 class="dropdown-header">
+                    <?php echo $name;?>
+                </h6>
+                <?php
+                foreach ($brands as $brand){
+                    $sid  = $brand['id'];
+                    $sname = $brand['name'];
+
+                    ?>
+                    <li><a class="dropdown-item" href="#"><?php echo  $sname?></a></li>
+                <?php }?>
+<!--            </ul>-->
         </div>
         <hr>
 

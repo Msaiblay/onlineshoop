@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,7 +83,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="page-login.html">
+                    <a class="dropdown-item" href="<?php echo $GLOBALS['view_path']?>logout">
                         <i class="icofont-logout"></i>
                         Logout
                     </a>
@@ -96,10 +99,9 @@
 
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
-        <img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">John Doe</p>
-            <p class="app-sidebar__user-designation">Frontend Developer</p>
+            <p class="app-sidebar__user-name"><?php echo $_SESSION['login_user']['name']?></p>
+            <p class="app-sidebar__user-designation"><?php echo $_SESSION['login_user']['rolename']?></p>
         </div>
     </div>
 

@@ -84,7 +84,8 @@ require 'frontendheader.php';
                                     <li class="list-inline-item"><i class='bx bxs-star-half' ></i></li>
                                 </ul>
                             </div>
-                            <a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+                            <button href="#" class="addtocartBtn btn btn-outline-info text-decoration-none"
+                            data-id="<?php echo $di ?>" data-name="<?php echo $diname ?>" data-codeno="<?php echo $dicodene ?>" data-price="<?php echo $diprice ?>" data-dprice="<?php echo $didprice ?>"  data-photo="<?php echo $diphoto ?>">Add to Cart</button>
                         </div>
                     </div>
                         <?php } ?>
@@ -138,7 +139,8 @@ require 'frontendheader.php';
                                 </ul>
                             </div>
 
-                            <a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+                            <button href="#" class="addtocartBtn btn btn-outline-info text-decoration-none"
+                                    data-id="<?php echo $niid ?>" data-name="<?php echo $niname?>" data-codeno="<?php echo $nicodene ?>" data-price="<?php echo $niprice ?>" data-dprice="<?php echo $nidprice ?>"  data-photo="<?php echo $niphoto ?>">Add to Cart</button>
 
                         </div>
                     </div>
@@ -195,7 +197,8 @@ require 'frontendheader.php';
                                     </ul>
                                 </div>
 
-                                <a href="#" class="addtocartBtn text-decoration-none">Add to Cart</a>
+                                <button href="#" class="addtocartBtn btn btn-outline-info text-decoration-none"
+                                        data-id="<?php echo $riid ?>" data-name="<?php echo $riname?>" data-codeno="<?php echo $ricodene ?>" data-price="<?php echo $riprice ?>" data-dprice="<?php echo $ridprice ?>"  data-photo="<?php echo $niphoto ?>">Add to Cart</button>
 
                             </div>
                         </div>

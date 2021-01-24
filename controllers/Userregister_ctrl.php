@@ -53,16 +53,37 @@ class Userregister_ctrl
         $usrmdl = new Userregister_mdl();
         $loginresult = $usrmdl->login_data($data);
 
+        session_start();
         if ($loginresult){
-            var_dump($loginresult);
+            $_SESSION['login_user'] = $loginresult;
+            $roleid = $loginresult['roleid'];
+
+            if ($roleid ==2){
+                if (isset($_SESSION['carturl'])){
+                    header("location:".$_SESSION['carturl']);
+                }else{
+                    $url = $GLOBALS['view_path'];
+                    header("location:".$url);
+                }
+            }else{
+                $url = $GLOBALS['view_path'].'category_list';
+                header("location:".$url);
+            }
         }else{
-            session_start();
             $_SESSION['login_failed'] ='Email and Password incorrect';
 
             $url = $GLOBALS['view_path'].'login';
             header("location:".$url);
         }
 
+
+
+    }
+    function logout(){
+        session_start();
+        session_destroy();
+        $url = $GLOBALS['view_path'];
+        header("location:".$url);
 
     }
 
