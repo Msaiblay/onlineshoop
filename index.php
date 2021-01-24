@@ -32,6 +32,10 @@ $userregister = new Userregister_ctrl();
 require $GLOBALS['controller_file_path']."Order_ctrl.php";
 $order = new Order_ctrl();
 
+//admin order
+require $GLOBALS['controller_file_path']."Adminorder_ctrl.php";
+$adminorder = new Adminorder_ctrl();
+
 //-------------------------------------------------//-------------------------------------
 //category
 if ($router =='category_list'){
@@ -188,10 +192,15 @@ elseif ($router == 'logout') {
 elseif ($router == 'storeorder') {
     $order->store();
 }
-//order
+//success order
 elseif ($router == 'successorder') {
     $brand = $brand->read();
     $categories = $category-> read();
     require $GLOBALS['view_file_path']."ordersuccess.php";
+}
+
+elseif ($router == 'adminorder') {
+    $adminorders =$adminorder->read();
+    require $GLOBALS['view_file_path']."adminorder.php";
 }
 

@@ -107,7 +107,7 @@ session_start();
 
     <ul class="app-menu">
         <li>
-            <a class="app-menu__item" href="dashboard.html">
+            <a class="app-menu__item" href="<?php echo $GLOBALS['view_path']?>template/backend/dashboard.html">
                 <i class="app-menu__icon icofont-dashboard"></i>
                 <span class="app-menu__label">
                             Dashboard
@@ -116,7 +116,7 @@ session_start();
         </li>
 
         <li>
-            <a class="app-menu__item" href="dashboard.html">
+            <a class="app-menu__item" href="<?php echo $GLOBALS['view_path']?>adminorder">
                 <i class="app-menu__icon icofont-prestashop"></i>
                 <span class="app-menu__label">
                             Order
@@ -125,7 +125,7 @@ session_start();
         </li>
 
         <li>
-            <a class="app-menu__item" href="dashboard.html">
+            <a class="app-menu__item" href="">
                 <i class="app-menu__icon icofont-users-social"></i>
                 <span class="app-menu__label">
                             Customer

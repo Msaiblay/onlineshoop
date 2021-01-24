@@ -58,8 +58,8 @@ require 'backendheader.php';
                                     <?php echo $bname;?>
                                 </td>
                                 <td>
-                                    <?php echo $discount;?><br>
-                                    <del><?php echo $price;?></del>
+                                    <?php echo $discount;?> Ks<br>
+                                    <del><?php echo $price;?> Ks</del>
 
                                 </td>
 

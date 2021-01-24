@@ -71,8 +71,8 @@ require 'frontendheader.php';
                             <p class="text-truncate"><?php echo $diname ?></p>
                             <p class="item-price">
 
-                                <strike> <?php echo $diprice ?></strike>
-                                <span class="d-block"><?php echo $didprice ?></span>
+                                <strike> <?php echo $diprice ?> Ks</strike>
+                                <span class="d-block"><?php echo $didprice ?> Ks</span>
                             </p>
 
                             <div class="star-rating">
@@ -121,10 +121,10 @@ require 'frontendheader.php';
 
                             <p class="item-price">
                             <?php if ($nidprice){ ?>
-                                <strike><?php echo $niprice?></strike>
-                                <span class="d-block"><?php echo $nidprice?></span>
+                                <strike><?php echo $niprice?> Ks</strike>
+                                <span class="d-block"><?php echo $nidprice?> Ks</span>
                             <?php }else{ ?>
-                                <span class="d-block"><?php echo $niprice?></span>
+                                <span class="d-block"><?php echo $niprice?> Ks</span>
                             <?php } ?>
                             </p>
 
@@ -179,10 +179,10 @@ require 'frontendheader.php';
 
                                 <p class="item-price">
                                     <?php if ($ridprice){ ?>
-                                        <strike><?php echo $riprice?></strike>
-                                        <span class="d-block"><?php echo $ridprice?></span>
+                                        <strike><?php echo $riprice?> Ks</strike>
+                                        <span class="d-block"><?php echo $ridprice?> Ks</span>
                                     <?php }else{ ?>
-                                        <span class="d-block"><?php echo $riprice?></span>
+                                        <span class="d-block"><?php echo $riprice?> Ks</span>
                                     <?php } ?>
                                 </p>
 

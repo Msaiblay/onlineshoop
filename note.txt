@@ -1,41 +1,65 @@
-codeno
+<thead>
+                        <tr>
+                            <th>#</th>
+                            <th>orderdate</th>
+                            <th>voucherno</th>
+                            <th>total</th>
+                            <th>note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $i = 1;
+                        foreach ($adminorders as $aor){
+                            $id = $aor['id'];
+                            $orderdate  =$aor['orderdate'];
+                            $voucherno  =$aor['voucherno'];
+                            $total  =$aor['total'];
+                            $note  =$aor['note'];
 
-subtotal = v.qty*v.price;
-                    html = `
-                    <tr>
-                        <td>
-                            <button class="btn btn-outline-danger remove btn-sm" style="border-radius: 50%">
-                                <i class="icofont-close-line"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <img src="${v.photo}" class="cartImg">
-                        </td>
-                        <td>
-                            <p>${v.name}</p>
-                            <p>${v.codeno}</p>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-secondary plus_btn">
-                                <i class="icofont-plus"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <p>${v.qty}</p>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-secondary minus_btn">
-                                <i class="icofont-minus"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <p class="text-danger">
-                                ${v.dprice} Ks
-                            </p>
-                            <p class="font-weight-lighter">
-                                <del> ${v.price} Ks </del> </p>
-                        </td>
-                        <td>
-                            230,000 Ks
-                        </td>
-                    </tr>`;
+                            ?>
+                            <tr>
+                                <td><?php echo $i++;?> </td>
+                                <td><?php echo $orderdate; ?></td>
+                                <td><?php echo $voucherno; ?></td>
+                                <td><?php echo $total; ?></td>
+                                <td><?php echo $note; ?></td>
+
+                            </tr>
+                        <?php } ?>
+
+                        </tbody>
+
+
+
+<thead>
+                        <tr>
+                            <th>#</th>
+                            <th>orderdate</th>
+                            <th>voucherno</th>
+                            <th>total</th>
+                            <th>note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $i = 1;
+                        foreach ($adminorders as $aor){
+                            $id = $aor['id'];
+                            $orderdate  =$aor['orderdate'];
+                            $voucherno  =$aor['voucherno'];
+                            $total  =$aor['total'];
+                            $note  =$aor['note'];
+
+                            ?>
+                            <tr>
+                                <td><?php echo $i++;?> </td>
+                                <td><?php echo $orderdate; ?></td>
+                                <td><?php echo $voucherno; ?></td>
+                                <td><?php echo $total; ?></td>
+                                <td><?php echo $note; ?></td>
+
+                            </tr>
+                        <?php } ?>
+
+                        </tbody>

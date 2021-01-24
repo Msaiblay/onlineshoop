@@ -72,7 +72,7 @@ require 'frontendheader.php';
             </div>
 
             <div class="col-12 mt-5 ">
-                <a href="categories" class="btn btn-secondary mainfullbtncolor px-3" >
+                <a href="<?php echo  $GLOBALS['view_path']?>" class="btn btn-secondary mainfullbtncolor px-3" >
                     <i class="icofont-shopping-cart"></i>
                     Continue Shopping
                 </a>

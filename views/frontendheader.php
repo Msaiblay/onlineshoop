@@ -112,7 +112,7 @@ session_start();
 
             <!-- App Download -->
 
-            <img src="image/download.png" class="img-fluid d-xl-inline d-lg-inline d-md-none d-sm-none d-none" style="width: 150px">
+            <img src="<?php echo $GLOBALS['view_path'] ?>template/frontend/image/download.png" class="img-fluid d-xl-inline d-lg-inline d-md-none d-sm-none d-none" style="width: 150px">
         </div>
     </div>
 </div>
@@ -334,7 +334,7 @@ session_start();
         <a href="#"> Cart [ <span class="cartNoti"> 1 </span> ]  </a>
         <hr>
 
-        <img src="image/download.png" class="img-fluid ml-2 text-center" style="width: 150px">
+        <img src="<?php echo $GLOBALS['view_path'] ?>template/frontend/image/download.png" class="img-fluid ml-2 text-center" style="width: 150px">
         <hr>
 
         <p class="text-white ml-3"> Copyright &copy; <img src="<?php echo $GLOBALS['view_path']?>template/logo/logo_wh_transparent.png" style="width: 20px; height: 20px"> 2019  </p>

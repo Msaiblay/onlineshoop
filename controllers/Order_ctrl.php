@@ -20,6 +20,9 @@ class Order_ctrl
         $result = $order_mdl->insert_data($data);
         echo json_encode($result);
 
+        $url = $GLOBALS['view_path'].'successorder';
+        header("location:".$url);
+
 
     }
 

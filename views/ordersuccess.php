@@ -16,7 +16,7 @@ require('frontendheader.php');
             <div class="col-10 shadow p-3 mb-5 bg-white rounded">
                 <div class="row">
                     <div class="col-4">
-                        <img src="<?php echo $GLOBALS['view_path'] ?>template/frontend/image/success-tick-dribbble.gif" class="img-fluid">
+                        <img src="<?php echo $GLOBALS['view_path'] ?>template/frontend/image/success.png" class="img-fluid">
                     </div>
                     <div class="col-8 pt-5">
                         <h1> Your order is complete </h1>
