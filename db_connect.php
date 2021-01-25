@@ -1,6 +1,6 @@
 <?php
 $servername="localhost";
-$dbname="b20_pos";
+$dbname="b20_ps";
 $dbuser="root";
 $dbpassword="";
 
@@ -11,7 +11,7 @@ try {
     $conn = $pdo;
 
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-//    echo "Connection successfully";
+    echo "Connection successfully";
 }catch (PDOException $e){
     echo  "Connection Failed: ".$e->getMessage();
 }
